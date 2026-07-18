@@ -16,6 +16,9 @@ resource "docker_container" "wireguard" {
     external = 51820
     protocol = "udp"
   }
+  capabilities {
+    add = ["NET_ADMIN", "SYS_MODULE"]
+  }
   env = [
     "ALLOWEDIPS=0.0.0.0/0",
     "DEBIAN_FRONTEND=noninteractive",
