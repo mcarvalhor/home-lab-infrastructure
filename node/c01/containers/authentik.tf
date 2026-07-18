@@ -32,7 +32,7 @@ resource "docker_image" "authentik_postgres_image" {
 }
 
 resource "docker_image" "authentik_server_image" {
-  name         = "authentik/server:latest"
+  name         = "authentik/server:2026.5"
   keep_locally = true
 }
 
