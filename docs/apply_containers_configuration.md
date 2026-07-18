@@ -11,7 +11,7 @@ not stored in this repository. On first run, you must create a `terraform.tfvars
 the provided template.
 
 ```bash
-cd ~/home-infrastructure/node/$(hostname -s)/containers
+cd ~/home-lab-infrastructure/node/$(hostname -s)/containers
 cp terraform.tfvars.template terraform.tfvars
 ```
 
@@ -34,21 +34,21 @@ If this is the first time running on this node:
 
 ```bash
 cd ~
-git clone <repository-url> home-infrastructure
+git clone <repository-url> home-lab-infrastructure
 ```
 
 If the repository is already present, pull the latest changes instead:
 
 ```bash
-cd ~/home-infrastructure
+cd ~/home-lab-infrastructure
 git pull
 ```
 
 ### 3. Run the apply script
 
 ```bash
-~/home-infrastructure/node/_common/scripts/apply_terraform_configuration.sh \
-  ~/home-infrastructure/node/$(hostname -s)/containers
+~/home-lab-infrastructure/node/_common/scripts/apply_terraform_configuration.sh \
+  ~/home-lab-infrastructure/node/$(hostname -s)/containers
 ```
 
 The script will automatically:t
@@ -64,7 +64,7 @@ Once the repository is cloned and `terraform.tfvars` is populated, subsequent ap
 require pulling updates and re-running the script:
 
 ```bash
-cd ~/home-infrastructure && git pull
-~/home-infrastructure/node/_common/scripts/apply_terraform_configuration.sh \
-  ~/home-infrastructure/node/$(hostname -s)/containers
+cd ~/home-lab-infrastructure && git pull
+~/home-lab-infrastructure/node/_common/scripts/apply_terraform_configuration.sh \
+  ~/home-lab-infrastructure/node/$(hostname -s)/containers
 ```

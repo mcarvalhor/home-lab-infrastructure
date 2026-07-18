@@ -1,4 +1,4 @@
-# home-infrastructure
+# home-lab-infrastructure
 
 Personal home lab infrastructure managed as code. This repository contains the Terraform configurations, bootstrap scripts, and operational tooling for all machines running in my home lab environment.
 
@@ -7,7 +7,7 @@ Personal home lab infrastructure managed as code. This repository contains the T
 ## Repository Structure
 
 ```
-home-infrastructure/
+home-lab-infrastructure/
 ├── docs/                                        # Operational documentation and runbooks
 ├── node/
 │   ├── _common/                                 # Shared configuration and scripts for all nodes
