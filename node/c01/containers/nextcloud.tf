@@ -34,10 +34,12 @@ resource "docker_container" "nextcloud" {
     "MAIL_DOMAIN=mcarvalhor.com",
     "PHP_MEMORY_LIMIT=12228M",
     "PHP_UPLOAD_LIMIT=12228M",
-    "NEXTCLOUD_TRUSTED_DOMAINS=mcarvalhor.com",
+    "NEXTCLOUD_TRUSTED_DOMAINS=cloud.mcarvalhor.com mcarvalhor.com",
     "NEXTCLOUD_INIT_HTACCESS=true",
     "OVERWRITECLIURL=https://cloud.mcarvalhor.com",
+    "OVERWRITEHOST=cloud.mcarvalhor.com",
     "OVERWRITEPROTOCOL=https",
+    #"TRUSTED_PROXIES=${docker_container.wireguard.network_data.ip_address} 10.0.0.0/8", # To be added after moving nginx-proxy-manager to or01.
     "PHPIZE_DEPS=autoconf 		dpkg-dev 		file 		g++ 		gcc 		libc-dev 		make 		pkg-config 		re2c",
     "PHP_INI_DIR=/usr/local/etc/php",
     "APACHE_CONFDIR=/etc/apache2",
