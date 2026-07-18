@@ -27,7 +27,7 @@ resource "docker_volume" "vol_authentik_custom_templates" {
 }
 
 resource "docker_image" "authentik_postgres_image" {
-  name         = "postgres:latest"
+  name         = "postgres:16-alpine"
   keep_locally = true
 }
 
