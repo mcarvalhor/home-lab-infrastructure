@@ -1,9 +1,9 @@
 # Copy this template to "terraform.tfvars" and populate it with your actual sensitive values.
 
-authentik_pg_password        = "<enter the value here>" # openssl rand -base64 36
-authentik_secret_key         = "<enter the value here>" # openssl rand -base64 60
+authentik_pg_password        = "<enter the value here>" # echo "$(openssl rand -base64 36 | tr -d '\n')"
+authentik_secret_key         = "<enter the value here>" # echo "$(openssl rand -base64 60 | tr -d '\n')"
 cloudflared_token            = "<enter the value here>"
-nextcloud_mysql_password     = "<enter the value here>" # openssl rand -base64 36
+nextcloud_mysql_password     = "<enter the value here>" # echo "$(openssl rand -base64 36 | tr -d '\n')"
 nextcloud_smtp_password      = "<enter the value here>"
 plex_claim                   = "<enter the value here>"
-zabbix_mysql_password        = "<enter the value here>" # openssl rand -base64 36
+zabbix_mysql_password        = "<enter the value here>" # echo "$(openssl rand -base64 36 | tr -d '\n')"
