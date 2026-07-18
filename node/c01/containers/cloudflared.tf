@@ -3,12 +3,13 @@ variable "cloudflared_token" {
 }
 
 resource "docker_image" "cloudflared_image" {
-  name = "cloudflare/cloudflared:latest"
+  name         = "cloudflare/cloudflared:latest"
+  keep_locally = true
 }
 
 resource "docker_container" "cloudflared" {
   name    = "cloudflared"
   image   = docker_image.cloudflared_image.image_id
   restart = "unless-stopped"
-  command = "'tunnel' '--no-autoupdate' 'run' '--token' '${var.cloudflared_token}'"
+  command = ["tunnel", "--no-autoupdate", "run", "--token", "${var.cloudflared_token}"]
 }

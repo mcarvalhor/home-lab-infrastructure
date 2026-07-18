@@ -1,0 +1,8 @@
+# Copy this template to "terraform.tfvars" and populate it with your actual sensitive values.
+
+cloudflared_token            = "<enter the value here>"
+nextcloud_mysql_password     = "<enter the value here>"
+nextcloud_smtp_password      = "<enter the value here>"
+plex_claim                   = "<enter the value here>"
+zabbix_server_mysql_password = "<enter the value here>"
+zabbix_web_mysql_password    = "<enter the value here>"
