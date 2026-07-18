@@ -13,15 +13,15 @@ resource "docker_container" "teamspeak" {
   restart = "unless-stopped"
   ports {
     internal = 10011
-    external = 10011
+    external = local.ports.teamspeak_query
   }
   ports {
     internal = 30033
-    external = 30033
+    external = local.ports.teamspeak_filexfr
   }
   ports {
     internal = 9987
-    external = 9987
+    external = local.ports.teamspeak_voice
     protocol = "udp"
   }
   env = [

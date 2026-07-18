@@ -17,16 +17,16 @@ resource "docker_container" "transmission" {
   restart = "unless-stopped"
   ports {
     internal = 51413
-    external = 51413
+    external = local.ports.transmission_peer
   }
   ports {
     internal = 51413
-    external = 51413
+    external = local.ports.transmission_peer
     protocol = "udp"
   }
   ports {
     internal = 9091
-    external = 20004
+    external = local.ports.transmission_web
   }
   env = [
     "HOME=/root",

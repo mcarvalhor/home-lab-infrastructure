@@ -21,7 +21,7 @@ resource "docker_container" "plex" {
   }
   ports {
     internal = 32400
-    external = 20005
+    external = local.ports.plex
   }
   env = [
     "DEBIAN_FRONTEND=noninteractive",

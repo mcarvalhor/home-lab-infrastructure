@@ -13,7 +13,7 @@ resource "docker_container" "wireguard" {
   restart = "unless-stopped"
   ports {
     internal = 51820
-    external = 51820
+    external = local.ports.wireguard
     protocol = "udp"
   }
   capabilities {

@@ -9,7 +9,7 @@ resource "docker_container" "nginx_torrent_dl" {
   restart = "unless-stopped"
   ports {
     internal = 80
-    external = 20010
+    external = local.ports.nginx_torrent_dl
   }
   env = [
     "HTTPD_PREFIX=/usr/local/apache2",

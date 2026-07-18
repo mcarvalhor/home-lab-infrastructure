@@ -9,7 +9,7 @@ resource "docker_container" "phpmyadmin" {
   restart = "unless-stopped"
   ports {
     internal = 80
-    external = 20003
+    external = local.ports.phpmyadmin
   }
   env = [
     "APACHE_CONFDIR=/etc/apache2",

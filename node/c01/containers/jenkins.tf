@@ -12,7 +12,7 @@ resource "docker_container" "jenkins" {
   image = docker_image.jenkins_image.image_id
   ports {
     internal = 8080
-    external = 20002
+    external = local.ports.jenkins
   }
   env = [
     "COPY_REFERENCE_FILE_LOG=/var/jenkins_home/copy_reference_file.log",

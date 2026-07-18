@@ -1,8 +1,9 @@
 # Copy this template to "terraform.tfvars" and populate it with your actual sensitive values.
 
+authentik_pg_password        = "<enter the value here>" # openssl rand -base64 36
+authentik_secret_key         = "<enter the value here>" # openssl rand -base64 60
 cloudflared_token            = "<enter the value here>"
-nextcloud_mysql_password     = "<enter the value here>"
+nextcloud_mysql_password     = "<enter the value here>" # openssl rand -base64 36
 nextcloud_smtp_password      = "<enter the value here>"
 plex_claim                   = "<enter the value here>"
-zabbix_server_mysql_password = "<enter the value here>"
-zabbix_web_mysql_password    = "<enter the value here>"
+zabbix_mysql_password        = "<enter the value here>" # openssl rand -base64 36

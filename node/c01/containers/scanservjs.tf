@@ -18,7 +18,7 @@ resource "docker_container" "scanservjs" {
   }
   ports {
     internal = 8080
-    external = 20007
+    external = local.ports.scanservjs
   }
   env = [
     "AIRSCAN_DEVICES=",

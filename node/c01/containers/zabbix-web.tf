@@ -1,7 +1,3 @@
-variable "zabbix_web_mysql_password" {
-  type = string
-}
-
 resource "docker_image" "zabbix_web_image" {
   name         = "zabbix/zabbix-web-nginx-mysql:latest"
   keep_locally = true
@@ -13,13 +9,13 @@ resource "docker_container" "zabbix_web" {
   restart = "unless-stopped"
   ports {
     internal = 8080
-    external = 20001
+    external = local.ports.zabbix_web
   }
   env = [
     "DB_SERVER_HOST=10.1.1.1",
     "DB_SERVER_PORT=3306",
     "MYSQL_DATABASE=zabbix",
-    "MYSQL_PASSWORD=${var.zabbix_web_mysql_password}",
+    "MYSQL_PASSWORD=${var.zabbix_mysql_password}",
     "MYSQL_USER=zabbix",
     "PHP_TZ=America/Sao_Paulo",
     "TERM=xterm",

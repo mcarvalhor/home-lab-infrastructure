@@ -17,7 +17,7 @@ resource "docker_container" "handbrake" {
   }
   ports {
     internal = 5800
-    external = 20006
+    external = local.ports.handbrake
   }
   env = [
     "APP_NAME=HandBrake",

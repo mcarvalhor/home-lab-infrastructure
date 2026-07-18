@@ -9,7 +9,7 @@ resource "docker_container" "portainer_agent" {
   restart = "unless-stopped"
   ports {
     internal = 9001
-    external = 9001
+    external = local.ports.portainer_agent
   }
   volumes {
     host_path      = "/var/run/docker.sock"

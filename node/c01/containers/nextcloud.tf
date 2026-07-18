@@ -17,7 +17,7 @@ resource "docker_container" "nextcloud" {
   restart = "unless-stopped"
   ports {
     internal = 80
-    external = 20008
+    external = local.ports.nextcloud
   }
   env = [
     "MYSQL_DATABASE=nextcloud",

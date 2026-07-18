@@ -1,4 +1,4 @@
-variable "zabbix_server_mysql_password" {
+variable "zabbix_mysql_password" {
   type = string
 }
 
@@ -13,13 +13,13 @@ resource "docker_container" "zabbix_server" {
   restart = "unless-stopped"
   ports {
     internal = 10051
-    external = 10051
+    external = local.ports.zabbix_server
   }
   env = [
     "DB_SERVER_HOST=10.1.1.1",
     "DB_SERVER_PORT=3306",
     "MYSQL_DATABASE=zabbix",
-    "MYSQL_PASSWORD=${var.zabbix_server_mysql_password}",
+    "MYSQL_PASSWORD=${var.zabbix_mysql_password}",
     "MYSQL_USER=zabbix",
     "ZBX_ALLOWUNSUPPORTEDDBVERSIONS=1",
     "ZBX_JAVAGATEWAY_ENABLE=true",
