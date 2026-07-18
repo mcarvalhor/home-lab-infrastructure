@@ -76,7 +76,7 @@ resource "docker_container" "authentik_server" {
     external = local.ports.authentik_http
   }
   env = [
-    "AUTHENTIK_POSTGRESQL__HOST=authentic_postgresql",
+    "AUTHENTIK_POSTGRESQL__HOST=authentic_postgres",
     "AUTHENTIK_POSTGRESQL__NAME=authentik",
     "AUTHENTIK_POSTGRESQL__USER=authentik",
     "AUTHENTIK_POSTGRESQL__PASSWORD=${var.authentik_pg_password}",
@@ -104,7 +104,7 @@ resource "docker_container" "authentik_worker" {
     name = docker_network.authentik.name
   }
   env = [
-    "AUTHENTIK_POSTGRESQL__HOST=authentic_postgresql",
+    "AUTHENTIK_POSTGRESQL__HOST=authentic_postgres",
     "AUTHENTIK_POSTGRESQL__NAME=authentik",
     "AUTHENTIK_POSTGRESQL__USER=authentik",
     "AUTHENTIK_POSTGRESQL__PASSWORD=${var.authentik_pg_password}",
