@@ -4,13 +4,9 @@ resource "docker_image" "wireguard_client_image" {
   pull_triggers = [local.last_deployment.wireguard]
 }
 
-resource "docker_volume" "vol_wireguard_client_data" {
-  name = "wireguard_data"
-}
-
 resource "docker_container" "wireguard_client" {
   name         = "wireguard-client"
-  image        = docker_image.wireguard_image.image_id
+  image        = docker_image.wireguard_client_image.image_id
   restart      = "unless-stopped"
   network_mode = "host"
   capabilities {
