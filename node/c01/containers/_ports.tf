@@ -20,7 +20,6 @@ locals {
     teamspeak_filexfr = 30033
     teamspeak_voice   = 9987
     transmission_peer = 51413
-    wireguard         = 51820
   }
 }
 
