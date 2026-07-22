@@ -40,12 +40,12 @@ resource "docker_container" "wireguard_client" {
     add = ["CAP_NET_ADMIN", "CAP_SYS_MODULE"]
   }
   volumes {
-    host_path      = abspath("${path.root}/configs/wireguard-client.conf")
+    host_path      = abspath("${path.module}/configs/wireguard-client.wg.conf")
     container_path = "/config/wg0.conf"
     read_only      = true
   }
   volumes {
-    host_path      = abspath("${path.root}/configs/wireguard-client.conf")
+    host_path      = abspath("${path.module}/configs/wireguard-client.wg.conf")
     container_path = "/config/wg_confs/wg0.conf"
     read_only      = true
   }
@@ -54,6 +54,9 @@ resource "docker_container" "wireguard_client" {
     container_path = "/lib/modules"
     read_only      = true
   }
+  depends_on = [
+    local_sensitive_file.wireguard_client_conf_file
+  ]
   lifecycle {
     replace_triggered_by = [
       local_sensitive_file.wireguard_client_conf_file
