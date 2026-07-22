@@ -10,6 +10,7 @@ resource "docker_volume" "vol_jenkins_data" {
 resource "docker_container" "jenkins" {
   name  = "jenkins"
   image = docker_image.jenkins_image.image_id
+  restart = "unless-stopped"
   ports {
     internal = 8080
     external = local.ports.jenkins
