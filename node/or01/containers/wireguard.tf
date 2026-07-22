@@ -1,5 +1,5 @@
 resource "docker_image" "wireguard_image" {
-  name          = "ghcr.io/wg-easy/wg-easy:edge"
+  name          = "linuxserver/wireguard:latest"
   keep_locally  = false
   pull_triggers = [local.last_deployment.wireguard]
 }
@@ -9,28 +9,25 @@ resource "docker_volume" "vol_wireguard_data" {
 }
 
 resource "docker_container" "wireguard" {
-  name         = "wireguard"
-  image        = docker_image.wireguard_image.image_id
-  restart      = "unless-stopped"
+  name    = "wireguard"
+  image   = docker_image.wireguard_image.image_id
+  restart = "unless-stopped"
   network_mode = "host"
   capabilities {
     add = ["CAP_NET_ADMIN", "CAP_SYS_MODULE"]
   }
   env = [
-    "WG_ALLOWED_IPS=0.0.0.0/0, ::/0",
-    "WG_HOST=vpn.mcarvalhor.com",
-    "WG_PORT=${local.ports.wireguard_vpn}",
-    "WG_MTU=null",
-    "WG_PERSISTENT_KEEPALIVE=0",
-    "WG_DEFAULT_ADDRESS=10.2.0.1",
-    "WG_DEFAULT_DNS=1.1.1.1, 1.0.0.1",
-    "PORT=${local.ports.wireguard_web}",
-    "HOST=0.0.0.0",
-    "INSECURE=true",
+    "ALLOWEDIPS=0.0.0.0/0,::/0",
+    "INTERNAL_SUBNET=10.2.0.1,fd8c:1111:2222::/64",
+    "PEERDNS=1.1.1.1,1.0.0.1,2606:4700:4700::1111,2606:4700:4700::1001",
+    "PEERS=c01,mcarvalhor",
+    "SERVERPORT=${local.ports.wireguard_vpn}",
+    "SERVERURL=vpn.cluster.mcarvalhor.com",
+    "TZ=America/Sao_Paulo",
   ]
   volumes {
     volume_name    = docker_volume.vol_wireguard_data.name
-    container_path = "/etc/wireguard"
+    container_path = "/config"
   }
   volumes {
     host_path      = "/lib/modules"
