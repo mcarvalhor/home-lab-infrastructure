@@ -7,7 +7,6 @@ locals {
     portainer_agent : "Wed Jul 22 03:39:47 AM -03 2026"
     phpmyadmin : "Wed Jul 22 03:39:47 AM -03 2026"
     nginx_torrent_dl : "Wed Jul 22 03:39:47 AM -03 2026"
-    nginx_proxy_manager : "Wed Jul 22 03:39:47 AM -03 2026"
     zabbix_web : "Wed Jul 22 03:39:47 AM -03 2026"
     zabbix_server : "Wed Jul 22 03:39:47 AM -03 2026"
     teamspeak : "Wed Jul 22 03:39:47 AM -03 2026"
