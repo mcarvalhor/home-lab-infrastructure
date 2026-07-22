@@ -1,6 +1,7 @@
 resource "docker_image" "nginx_torrent_dl_image" {
   name         = "httpd:latest"
   keep_locally = true
+  pull_triggers = [ local.last_deployment.nginx_torrent_dl ]
 }
 
 resource "docker_container" "nginx_torrent_dl" {

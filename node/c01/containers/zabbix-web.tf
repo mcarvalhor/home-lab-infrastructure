@@ -1,6 +1,7 @@
 resource "docker_image" "zabbix_web_image" {
   name         = "zabbix/zabbix-web-nginx-mysql:latest"
   keep_locally = true
+  pull_triggers = [ local.last_deployment.zabbix_web ]
 }
 
 resource "docker_container" "zabbix_web" {

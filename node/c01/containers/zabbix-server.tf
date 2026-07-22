@@ -5,6 +5,7 @@ variable "zabbix_mysql_password" {
 resource "docker_image" "zabbix_server_image" {
   name         = "zabbix/zabbix-server-mysql:latest"
   keep_locally = true
+  pull_triggers = [ local.last_deployment.zabbix_server ]
 }
 
 resource "docker_container" "zabbix_server" {

@@ -1,6 +1,7 @@
 resource "docker_image" "handbrake_image" {
   name         = "jlesage/handbrake:latest"
   keep_locally = true
+  pull_triggers = [ local.last_deployment.handbrake ]
 }
 
 resource "docker_volume" "vol_handbrake_data" {

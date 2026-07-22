@@ -1,6 +1,7 @@
 resource "docker_image" "mariadb_image" {
   name         = "mariadb:latest"
   keep_locally = true
+  pull_triggers = [ local.last_deployment.mariadb ]
 }
 
 resource "docker_volume" "vol_mariadb_data" {

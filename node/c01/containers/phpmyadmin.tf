@@ -1,6 +1,7 @@
 resource "docker_image" "phpmyadmin_image" {
   name         = "phpmyadmin:latest"
   keep_locally = true
+  pull_triggers = [ local.last_deployment.phpmyadmin ]
 }
 
 resource "docker_container" "phpmyadmin" {

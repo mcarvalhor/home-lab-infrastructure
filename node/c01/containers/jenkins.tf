@@ -1,6 +1,7 @@
 resource "docker_image" "jenkins_image" {
   name         = "jenkins/jenkins:latest"
   keep_locally = true
+  pull_triggers = [ local.last_deployment.jenkins ]
 }
 
 resource "docker_volume" "vol_jenkins_data" {

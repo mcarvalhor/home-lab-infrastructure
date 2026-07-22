@@ -29,11 +29,13 @@ resource "docker_volume" "vol_authentik_custom_templates" {
 resource "docker_image" "authentik_postgres_image" {
   name         = "postgres:16-alpine"
   keep_locally = true
+  pull_triggers = [ local.last_deployment.authentik_postgres ]
 }
 
 resource "docker_image" "authentik_server_image" {
   name         = "authentik/server:2026.5"
   keep_locally = true
+  pull_triggers = [ local.last_deployment.authentik_server ]
 }
 
 resource "docker_container" "authentik_postgres" {

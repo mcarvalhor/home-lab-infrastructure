@@ -1,6 +1,7 @@
 resource "docker_image" "nginx_proxy_manager_image" {
   name         = "jc21/nginx-proxy-manager:latest"
   keep_locally = true
+  pull_triggers = [ local.last_deployment.nginx_proxy_manager ]
 }
 
 resource "docker_volume" "vol_nginx_proxy_manager_data" {

@@ -1,6 +1,7 @@
 resource "docker_image" "scanservjs_image" {
   name         = "sbs20/scanservjs:latest"
   keep_locally = true
+  pull_triggers = [ local.last_deployment.scanservjs ]
 }
 
 resource "docker_volume" "vol_scanservjs_data" {

@@ -9,6 +9,7 @@ variable "nextcloud_mysql_password" {
 resource "docker_image" "nextcloud_image" {
   name         = "nextcloud:stable"
   keep_locally = true
+  pull_triggers = [ local.last_deployment.nextcloud ]
 }
 
 resource "docker_container" "nextcloud" {

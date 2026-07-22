@@ -5,6 +5,7 @@ variable "plex_claim" {
 resource "docker_image" "plex_image" {
   name         = "linuxserver/plex:latest"
   keep_locally = true
+  pull_triggers = [ local.last_deployment.plex ]
 }
 
 resource "docker_volume" "vol_plex_data" {

@@ -1,6 +1,7 @@
 resource "docker_image" "teamspeak_image" {
   name         = "teamspeak:latest"
   keep_locally = true
+  pull_triggers = [ local.last_deployment.teamspeak ]
 }
 
 resource "docker_volume" "vol_teamspeak_data" {
