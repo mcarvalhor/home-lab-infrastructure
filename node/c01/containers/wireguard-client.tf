@@ -9,7 +9,7 @@ variable "wireguard_client_keys" {
 
   # Enforce non-null constraints using validation blocks
   validation {
-    condition     = var.vpn_keys.private_key != null && var.vpn_keys.public_key != null && var.vpn_keys.preshared_key != null
+    condition     = var.wireguard_client_keys.private_key != null && var.wireguard_client_keys.public_key != null && var.wireguard_client_keys.preshared_key != null
     error_message = "All keys (private_key, public_key, and preshared_key) must be non-null values."
   }
 }
