@@ -1,5 +1,6 @@
 variable "zabbix_mysql_password" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 resource "docker_image" "zabbix_server_image" {

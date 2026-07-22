@@ -1,9 +1,11 @@
 variable "authentik_pg_password" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 variable "authentik_secret_key" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 resource "docker_network" "authentik" {

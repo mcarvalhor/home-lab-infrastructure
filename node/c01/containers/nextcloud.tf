@@ -1,9 +1,11 @@
 variable "nextcloud_smtp_password" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 variable "nextcloud_mysql_password" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 resource "docker_image" "nextcloud_image" {

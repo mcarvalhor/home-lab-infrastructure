@@ -1,5 +1,6 @@
 variable "cloudflared_token" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 resource "docker_image" "cloudflared_image" {

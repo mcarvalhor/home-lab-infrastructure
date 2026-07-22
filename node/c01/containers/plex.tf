@@ -1,5 +1,6 @@
 variable "plex_claim" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 resource "docker_image" "plex_image" {
