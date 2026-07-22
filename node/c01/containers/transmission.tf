@@ -1,7 +1,7 @@
 resource "docker_image" "transmission_image" {
-  name         = "linuxserver/transmission:latest"
-  keep_locally = true
-  pull_triggers = [ local.last_deployment.transmission ]
+  name          = "linuxserver/transmission:latest"
+  keep_locally  = false
+  pull_triggers = [local.last_deployment.transmission]
 }
 
 resource "docker_volume" "vol_transmission_ro_data" {

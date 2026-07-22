@@ -1,7 +1,7 @@
 resource "docker_image" "portainer_agent_image" {
-  name         = "portainer/agent:latest"
-  keep_locally = true
-  pull_triggers = [ local.last_deployment.portainer_agent ]
+  name          = "portainer/agent:latest"
+  keep_locally  = false
+  pull_triggers = [local.last_deployment.portainer_agent]
 }
 
 resource "docker_container" "portainer_agent" {

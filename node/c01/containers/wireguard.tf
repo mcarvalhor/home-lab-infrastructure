@@ -1,7 +1,7 @@
 resource "docker_image" "wireguard_image" {
-  name         = "linuxserver/wireguard:latest"
-  keep_locally = true
-  pull_triggers = [ local.last_deployment.wireguard ]
+  name          = "linuxserver/wireguard:latest"
+  keep_locally  = false
+  pull_triggers = [local.last_deployment.wireguard]
 }
 
 resource "docker_volume" "vol_wireguard_data" {

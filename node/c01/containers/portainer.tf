@@ -1,7 +1,7 @@
 resource "docker_image" "portainer_image" {
-  name         = "portainer/portainer-ce:latest"
-  keep_locally = true
-  pull_triggers = [ local.last_deployment.portainer ]
+  name          = "portainer/portainer-ce:latest"
+  keep_locally  = false
+  pull_triggers = [local.last_deployment.portainer]
 }
 
 resource "docker_volume" "vol_portainer_data" {

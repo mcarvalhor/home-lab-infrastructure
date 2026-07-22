@@ -4,9 +4,9 @@ variable "cloudflared_token" {
 }
 
 resource "docker_image" "cloudflared_image" {
-  name         = "cloudflare/cloudflared:latest"
-  keep_locally = true
-  pull_triggers = [ local.last_deployment.cloudflared ]
+  name          = "cloudflare/cloudflared:latest"
+  keep_locally  = false
+  pull_triggers = [local.last_deployment.cloudflared]
 }
 
 resource "docker_container" "cloudflared" {

@@ -1,7 +1,7 @@
 resource "docker_image" "jenkins_image" {
-  name         = "jenkins/jenkins:latest"
-  keep_locally = true
-  pull_triggers = [ local.last_deployment.jenkins ]
+  name          = "jenkins/jenkins:latest"
+  keep_locally  = false
+  pull_triggers = [local.last_deployment.jenkins]
 }
 
 resource "docker_volume" "vol_jenkins_data" {
@@ -9,8 +9,8 @@ resource "docker_volume" "vol_jenkins_data" {
 }
 
 resource "docker_container" "jenkins" {
-  name  = "jenkins"
-  image = docker_image.jenkins_image.image_id
+  name    = "jenkins"
+  image   = docker_image.jenkins_image.image_id
   restart = "unless-stopped"
   ports {
     internal = 8080
