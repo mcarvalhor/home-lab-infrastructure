@@ -18,6 +18,7 @@ opengist_oidc = {
   discovery_url = "<enter the value here>"
   admin_group   = "<enter the value here>"
 }
+kutt_jwt_secret = "<enter the value here>" # echo "$(openssl rand -base64 60 | tr -d '\n')"
 kutt_oidc = {
   client_id     = "<enter the value here>"
   client_secret = "<enter the value here>"

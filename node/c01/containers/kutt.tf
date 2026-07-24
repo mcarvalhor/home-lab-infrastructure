@@ -1,3 +1,9 @@
+variable "kutt_jwt_secret" {
+  type      = string
+  sensitive = true
+}
+
+
 variable "kutt_oidc" {
   type = object({
     client_id     = string
@@ -42,8 +48,9 @@ resource "docker_container" "kutt" {
     "DISALLOW_ANONYMOUS_LINKS=true",
     "TRUST_PROXY=true",
     "DB_CLIENT=better-sqlite3",
-    "DB_FILENAME=/var/lib/kutt/db/data",
+    "DB_FILENAME=/var/lib/kutt/data.sqlite",
     "CUSTOM_DOMAIN_USE_HTTPS=true",
+    "JWT_SECRET=${var.kutt_jwt_secret}",
     "OIDC_ENABLED=true",
     "OIDC_ISSUER=${var.kutt_oidc.issuer}",
     "OIDC_CLIENT_ID=${var.kutt_oidc.client_id}",
