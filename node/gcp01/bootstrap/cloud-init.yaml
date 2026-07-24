@@ -18,6 +18,12 @@ packages:
   - vim
   - nano
   - docker.io
+  - iputils-ping
+  - mtr-tiny
+  - traceroute
+  - dnsutils
+  - net-tools
+  - wireguard-tools
 
 # Execute post-installation commands
 runcmd:
