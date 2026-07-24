@@ -20,7 +20,7 @@ resource "docker_container" "wireguard" {
     "ALLOWEDIPS=0.0.0.0/0,::/0",
     "INTERNAL_SUBNET=10.2.0.1,fd8c:1111:2222::/64",
     "PEERDNS=1.1.1.1,1.0.0.1,2606:4700:4700::1111,2606:4700:4700::1001",
-    "PEERS=c01,mcarvalhor",
+    "PEERS=c01,gcp01,mcarvalhor",
     "SERVERPORT=${local.ports.wireguard_vpn}",
     "SERVERURL=vpn.cluster.mcarvalhor.com",
     "TZ=America/Sao_Paulo",
