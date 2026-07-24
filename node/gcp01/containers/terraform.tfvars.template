@@ -1,0 +1,7 @@
+# Copy this template to "terraform.tfvars" and populate it with your actual sensitive values.
+
+wireguard_client_keys = {
+  private_key   = "<enter the value here>"
+  public_key    = "<enter the value here>"
+  preshared_key = "<enter the value here>"
+}
