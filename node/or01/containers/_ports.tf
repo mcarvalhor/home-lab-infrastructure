@@ -4,6 +4,7 @@ locals {
 
     # Protocol-specific ports kept at their native number.
     portainer_agent = 9001
+    zabbix_agent    = 10050
     wireguard_vpn   = 51820
     wireguard_web   = 51821
   }
