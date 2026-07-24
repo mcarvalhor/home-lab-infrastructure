@@ -16,6 +16,7 @@ users:
 packages:
   - curl
   - vim
+  - nano
   - docker.io
 
 # Execute post-installation commands
