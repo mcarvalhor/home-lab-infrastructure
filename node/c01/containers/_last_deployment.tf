@@ -18,5 +18,6 @@ locals {
     transmission : "Wed Jul 22 03:39:47 AM -03 2026"
     jenkins : "Wed Jul 22 03:39:47 AM -03 2026"
     handbrake : "Wed Jul 22 03:39:47 AM -03 2026"
+    opengist : "Wed Jul 22 03:39:47 AM -03 2026"
   }
 }

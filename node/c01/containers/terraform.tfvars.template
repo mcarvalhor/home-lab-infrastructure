@@ -12,3 +12,9 @@ wireguard_client_keys = {
   public_key    = "<enter the value here>"
   preshared_key = "<enter the value here>"
 }
+opengist_oidc = {
+  client_key    = "<enter the value here>"
+  secret        = "<enter the value here>"
+  discovery_url = "<enter the value here>"
+  admin_group   = "<enter the value here>"
+}

@@ -11,6 +11,7 @@ locals {
     nextcloud        = 20008
     authentik_http   = 20009
     nginx_torrent_dl = 20010
+    opengist         = 20011
 
     # Protocol-specific ports kept at their native number.
     portainer         = 9443
