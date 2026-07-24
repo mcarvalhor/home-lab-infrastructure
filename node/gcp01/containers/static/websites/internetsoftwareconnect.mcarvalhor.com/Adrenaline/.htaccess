@@ -1,0 +1,9 @@
+RewriteEngine On
+
+RewriteRule ^index$ index.html [L]
+RewriteRule ^Index$ index.html [L]
+RewriteRule ^CheckUpdates$ CheckUpdates.php [L]
+RewriteRule ^Download$ Download.php [L]
+
+
+

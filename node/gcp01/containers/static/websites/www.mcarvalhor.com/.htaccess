@@ -1,0 +1,5 @@
+RewriteEngine On
+
+RewriteRule ^index$ index.php [L]
+
+Redirect /admin https://admin.mcarvalhor.com/

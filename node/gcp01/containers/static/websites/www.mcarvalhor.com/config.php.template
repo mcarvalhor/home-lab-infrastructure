@@ -1,0 +1,33 @@
+<?php
+
+// Copy this file into ".config.php" and fill the data appropriately.
+
+$socialLinks = [
+	["linkedin-in", "LinkedIn", "https://linkedin.com/in/myuser", "rgb(0, 119, 181)"],
+	["github", "GitHub", "https://github.com/myuser", "rgb(0, 0, 0)"],
+	["ubuntu", "Launchpad", "https://launchpad.net/~myuser", "rgb(233, 84, 32)"],
+	["facebook-f", "Facebook", "https://facebook.com/myuser", "rgb(59, 89, 152)"],
+	["twitter", "X", "https://x.com/myuser", "rgb(29, 161, 242)"],
+	["instagram", "Instagram", "https://instagram.com/myuser", "rgb(205, 72, 107)"],
+	["discord", "Discord", ["javascript:void(0);", "<span class='fab fa-discord'></span> myuser #1234"], "rgb(114, 137, 218)", true],
+	["whatsapp", "WhatsApp", ["https://wa.me/+5511999999999", "<a href='https://wa.me/+5511999999999'><span class='fab fa-whatsapp'></span> +55 (11) 99999-9999</a>"], "rgb(77, 194, 71)", true],
+	["telegram", "Telegram", "https://t.me/myuser", "rgb(0, 136, 204)", true],
+	["steam", "Steam", "https://steamcommunity.com/id/myuser", "rgb(42, 71, 94)", true],
+	["xbox", "Xbox Live", "https://account.xbox.com/Profile?GamerTag=myuser", "rgb(16, 124, 17)", true],
+];
+
+$headerImage = "https://github.com/myuser.png";
+
+$content = "This is my website!";
+$subtitle = "Personal Home Page";
+$seoDescription = "This is a personal website";
+$seoKeywords = "personal, website, home";
+
+$mail = ["myemail@domain.com", "mailto:myemail@domain.com"];
+$phone = ["+55 (11) 99999-9999", "https://wa.me/+5511999999999"];
+$location = ["Brazil", ""];
+
+$footer = '<span>' . date("Y") . '</span>';
+
+$recaptchaPublicToken = "<public token>";
+$recaptchaSecretToken = "<secret token>";

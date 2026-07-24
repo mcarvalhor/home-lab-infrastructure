@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,user-scalable=no">
+	<meta name="robots" content="noindex,nofollow,noarchive,noimageindex">
+	<meta name="author" content="https://www.mcarvalhor.com/">
+	<link rel="author" href="https://www.mcarvalhor.com/">
+	<link rel="icon" type="image/png" sizes="16x16 32x32 64x64" href="favicon64.png">
+	<link rel="icon" type="image/png" sizes="128x128 256x256 512x512" href="favicon.png">
+	<title>Adrenaline</title>
+	<style type="text/css">
+		@media not all and (min-width: 360px) and (min-height: 310px){
+			#main-noscreen {
+				display: block;
+			}
+			#main {
+				display: none;
+			}
+		}
+		@media all and (min-width: 360px) and (min-height: 310px){
+			#main-noscreen {
+				display: none;
+			}
+			#main {
+				display: block;
+			}
+			body {
+				background-image: url("bg.jpg");
+			}
+		}
+		body {
+			display: block;
+			margin: 0 auto;
+			background-color: rgb(210, 210, 210);
+			background-repeat: repeat;
+			background-position: center center;
+			background-attachment: fixed;
+			color: rgb(0, 0, 0);
+		}
+		#main {
+			font-size: 16px;
+			width: 52%;
+			min-width: 350px;
+			max-width: 1080px;
+			margin: 50px auto;
+			background-color: rgb(255, 255, 255);
+			border: 1px solid rgb(100, 100, 100);
+		}
+		#main-noscreen {
+			margin: 3px;
+			color: rgb(255,0,0);
+			text-align: justify;
+		}
+		#header {
+			display: block;
+			padding-top: 50px;
+			padding-bottom: 50px;
+			border-bottom: 1px solid rgb(100, 100, 100);
+			text-align: center;
+		}
+		#header a {
+			display: inline-block;
+			color: rgb(50, 119, 255);
+			font-size: 2.5em;
+			font-weight: bold;
+			margin-bottom: 10px;
+			text-decoration: none;
+		}
+		#content {
+			padding: 0px 20px;
+			text-align: justify;
+		}
+		#content a {
+			color: rgb(50, 119, 255);
+		}
+		#content li {
+			list-style-type: square;
+			margin-top: 5px;
+		}
+		#content .image {
+			list-style-type: none;
+			text-align: center;
+		}
+		#content .image img {
+			display: inline-block;
+			border: 0px;
+			margin: 0px auto;
+			max-width: 100%;
+		}
+		#content #download-link, #content #downloaded-link {
+			list-style-type: none;
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+		#content #download-link a {
+			display: inline-block;
+			padding: 10px;
+			border-radius: 3px;
+			font-size: 1.2em;
+			color: rgb(50, 119, 255);
+			background-color: transparent;
+			border: 1px solid rgb(50, 119, 255);
+			text-decoration: none;
+		}
+		#content #download-link a:hover {
+			color: rgb(255, 255, 255);
+			background-color: rgb(50, 119, 255);
+		}
+		#content #downloaded-link {
+			font-size: 0.8em;
+		}
+		#footer {
+			display: block;
+			text-align: center;
+			padding: 20px;
+		}
+	</style>
+	<script type="text/javascript">
+		function downloaded() {
+			document.getElementById("download-link").style.display = "none";
+			document.getElementById("downloaded-link").style.display = "block";
+		}
+	</script>
+</head>
+
+<body style="overflow: auto;">
+	<div id="main">
+		<div id="header">
+			<a href="?"><span></span>Adrenaline</a>
+		</div>
+		<div id="content">
+			<h2>Como Usar</h2>
+			<p>Para usar o Adrenaline, basta baixar o programa e abrir normalmente:</p>
+			<p>
+				<ul>
+					<li>Baixe o arquivo para seu computador:</li>
+					<li id="download-link" style="display: block;"><a href="Download" onclick="downloaded();">Baixar/Download</a></li>
+					<li id="downloaded-link" style="display: none;">O arquivo deve começar a ser baixado em breve... <a href="Download">Baixar de novo</a></li>
+					<li>Abra o arquivo baixado.</li>
+					<li>Se aparecer alguma notificação de seu anti-vírus, você pode ignorar e permitir que o Adrenaline seja executado. Não se preocupe, o programa não é vírus. Acontece que ele não é muito baixado, sendo assim muitos anti-vírus desconfiam dele. <a href="http://github.com/mcarvalhor/Adrenaline" onclick="alert('Você pode analisar o código-fonte do programa e até mesmo compilar manualmente se desejar.');" target="_blank">Eu sou um usuário muito avançado</a>.</li>
+					<li>Se você marcar "Exibir opções", você pode definir as configurações do temporizador (se desejável).</li>
+					<li>Clique em "Iniciar". Certifique-se de não bloquear o seu computador manualmente.</li>
+					<li>Pronto! O Adrenaline já está em execução.</li>
+				</ul>
+			</p>
+		</div>
+		<div id="footer">
+			<span>&copy; 2023</span>
+		</div>
+	</div>
+	<div id="main-noscreen">
+		<span>Sua tela é muito pequena para visualizar esta página da web.</span>
+	</div>
+</body>
+
+</html>
+
