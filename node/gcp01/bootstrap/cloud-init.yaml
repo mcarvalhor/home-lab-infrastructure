@@ -1,0 +1,30 @@
+#cloud-config
+
+package_update: true
+package_upgrade: true
+
+# Keep the default user configuration so GCP's SSH metadata injection continues to work perfectly
+users:
+  - default
+  - name: mcarvalhor
+    groups: sudo
+    shell: /bin/bash
+    lock_passwd: true
+    sudo: ALL=(ALL) NOPASSWD:ALL
+
+# Install standard repository packages
+packages:
+  - curl
+  - vim
+  - docker.io
+
+# Execute post-installation commands
+runcmd:
+  # Wait for snapd to finish seeding its base snaps before trying to use it
+  - snap wait system seed.loaded
+  # Install Terraform as a classic snap
+  - snap install terraform --classic
+  # Add the user to the docker group here to prevent a race condition 
+  # (ensures the group actually exists before assigning the user to it)
+  - usermod -aG docker mcarvalhor
+  - systemctl enable --now docker
