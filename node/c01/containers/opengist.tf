@@ -35,12 +35,13 @@ resource "docker_container" "opengist" {
   }
   env = [
     # https://github.com/thomiceli/opengist/blob/master/docs/configuration/cheat-sheet.md
-    "OG_EXTERNAL_URL=https://paste.mcarvalhor.com/",
+    "OG_EXTERNAL_URL=https://paste.mcarvalhor.com",
     "OG_HTTP_HOST=0.0.0.0",
     "OG_HTTP_PORT=6157",
     "OG_HTTP_GIT_ENABLED=true",
     "OG_API_ENABLED=true",
     "OG_DISABLE_FILE_UPLOAD=false",
+    "OG_SSH_GIT_ENABLED=disabled",
     "OG_SSH_HOST=0.0.0.0",
     "OG_SSH_PORT=2222",
     "OG_OIDC_PROVIDER_NAME=mcarvalhor.com",
@@ -48,6 +49,7 @@ resource "docker_container" "opengist" {
     "OG_OIDC_SECRET=${var.opengist_oidc.secret}",
     "OG_OIDC_DISCOVERY_URL=${var.opengist_oidc.discovery_url}",
     "OG_OIDC_ADMIN_GROUP=${var.opengist_oidc.admin_group}",
+    "OG_OIDC_GROUP_CLAIM_NAME=groups",
     "OG_CUSTOM_NAME=paste.mcarvalhor.com",
   ]
   volumes {
