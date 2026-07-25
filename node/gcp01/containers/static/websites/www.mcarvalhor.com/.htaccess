@@ -1,5 +1,6 @@
 RewriteEngine On
 
-RewriteRule ^index$ index.php [L]
+RewriteCond %{HTTP_HOST} !^www\.mcarvalhor\.com$ [NC]
+RewriteRule ^(.*)$ https://www.mcarvalhor.com/$1 [R=301,L]
 
 Redirect /admin https://admin.mcarvalhor.com/

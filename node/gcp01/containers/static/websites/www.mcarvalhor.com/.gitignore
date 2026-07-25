@@ -1,2 +1,2 @@
 # Ignore PHP sensitive configuration file
-.config.php
+config.php
