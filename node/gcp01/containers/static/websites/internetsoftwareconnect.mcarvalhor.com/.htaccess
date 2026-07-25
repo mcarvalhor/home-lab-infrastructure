@@ -1,4 +1,0 @@
-RewriteEngine On
-
-RewriteCond %{HTTP_HOST} !^internetsoftwareconnect\.mcarvalhor\.com$ [NC]
-RewriteRule ^(.*)$ https://internetsoftwareconnect.mcarvalhor.com/$1 [R=301,L]
