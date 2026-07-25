@@ -20,7 +20,7 @@ resource "docker_container" "php" {
   }
   volumes {
     host_path      = abspath("${path.module}/static/apache_config")
-    container_path = "/etc/apache2/sites-available"
+    container_path = "/etc/apache2/sites-enabled"
     read_only      = true
   }
   volumes {

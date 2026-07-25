@@ -4,7 +4,7 @@ $socialLinks = [ ];
 
 $headerImage = "picture-default.jpg";
 
-$content = "";
+$content = "This website is not bootstraped yet. See '.config.php.template' file.";
 $subtitle = "Home Page";
 $seoDescription = "";
 $seoKeywords = "";

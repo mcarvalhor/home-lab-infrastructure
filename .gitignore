@@ -32,9 +32,3 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
-
-# Ignore Wireguard configuration files
-*.wg.conf
-
-# Ignore PHP sensitive configuration files
-.config.php

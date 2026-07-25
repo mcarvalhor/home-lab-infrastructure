@@ -25,8 +25,14 @@ packages:
   - net-tools
   - wireguard-tools
 
+write_files:
+  - path: /etc/sysctl.d/99-ip-forward.conf
+    content: |
+      net.ipv4.ip_forward=1
+
 # Execute post-installation commands
 runcmd:
+  - systemctl restart systemd-sysctl
   # Wait for snapd to finish seeding its base snaps before trying to use it
   - snap wait system seed.loaded
   # Install Terraform as a classic snap
