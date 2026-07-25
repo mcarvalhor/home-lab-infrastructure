@@ -14,9 +14,9 @@ resource "docker_container" "php" {
     external = local.ports.php_https
   }
   healthcheck {
-    interval     = "60s"
+    interval     = "1m0s"
     timeout      = "3s"
-    start_period = "60s"
+    start_period = "1m0s"
     retries      = 10
     test         = ["CMD-SHELL", "bash -c '</dev/tcp/localhost/443' || exit 1"]
   }
