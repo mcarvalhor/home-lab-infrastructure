@@ -13,6 +13,13 @@ resource "docker_container" "php" {
     internal = 443
     external = local.ports.php_https
   }
+  healthcheck {
+    interval     = "60s"
+    timeout      = "3s"
+    start_period = "60s"
+    retries      = 10
+    test         = ["CMD-SHELL", "bash -c '</dev/tcp/localhost/443' || exit 1"]
+  }
   volumes {
     host_path      = abspath("${path.module}/static/websites")
     container_path = "/doc_root"
