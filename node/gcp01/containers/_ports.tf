@@ -5,7 +5,7 @@ locals {
     # Protocol-specific ports kept at their native number.
     portainer_agent = 9001
     zabbix_agent    = 10050
-    php_https = 443
+    php_https       = 443
   }
 }
 
