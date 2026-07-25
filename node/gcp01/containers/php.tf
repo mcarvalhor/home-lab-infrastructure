@@ -8,10 +8,10 @@ resource "docker_container" "php" {
   name    = "php"
   image   = docker_image.php_image.image_id
   restart = "unless-stopped"
-  command = ["bash", "-c", "a2enmod rewrite && echo '<Directory /doc_root>\nAllowOverride All\n</Directory>' >> /etc/apache2/apache2.conf && apache2-foreground"]
+  command = ["bash", "-c", "a2enmod rewrite ssl && apache2-foreground"]
   ports {
-    internal = 80
-    external = local.ports.php
+    internal = 443
+    external = local.ports.php_https
   }
   volumes {
     host_path      = abspath("${path.module}/static/websites")
@@ -21,6 +21,11 @@ resource "docker_container" "php" {
   volumes {
     host_path      = abspath("${path.module}/static/apache_config")
     container_path = "/etc/apache2/sites-available"
+    read_only      = true
+  }
+  volumes {
+    host_path      = abspath("${path.module}/static/certificates")
+    container_path = "/etc/apache2/ssl"
     read_only      = true
   }
 }

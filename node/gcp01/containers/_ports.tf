@@ -1,11 +1,11 @@
 locals {
   ports = {
     # Application UIs (proxied, 200xx range).
-    php = 20001
 
     # Protocol-specific ports kept at their native number.
     portainer_agent = 9001
     zabbix_agent    = 10050
+    php_https = 443
   }
 }
 
