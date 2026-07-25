@@ -1,4 +1,5 @@
 RewriteEngine On
+RewriteOptions Inherit
 
 RewriteRule ^Index$ index.html [NC,L]
 RewriteRule ^CheckUpdates$ CheckUpdates.php [NC,L]
