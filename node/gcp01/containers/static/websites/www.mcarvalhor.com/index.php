@@ -18,8 +18,8 @@ $footer = '<span>' . date("Y") . '</span>';
 $recaptchaPublicToken = "";
 $recaptchaSecretToken = "";
 
-if (file_exists(".config.php")) {
-	include(".config.php");
+if (file_exists("config.php")) {
+	include("config.php");
 }
 
 $requestType = $_GET["req"];
