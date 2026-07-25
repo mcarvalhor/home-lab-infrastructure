@@ -24,6 +24,7 @@ packages:
   - dnsutils
   - net-tools
   - wireguard-tools
+  - htop
 
 write_files:
   - path: /etc/sysctl.d/99-ip-forward.conf
