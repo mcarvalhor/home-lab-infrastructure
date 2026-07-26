@@ -43,7 +43,7 @@ resource "docker_container" "nextcloud" {
     "OVERWRITECLIURL=https://cloud.mcarvalhor.com",
     "OVERWRITEHOST=cloud.mcarvalhor.com",
     "OVERWRITEPROTOCOL=https",
-    #"TRUSTED_PROXIES=${docker_container.wireguard.network_data.ip_address} 10.0.0.0/8", # To be added after moving nginx-proxy-manager to or01.
+    "TRUSTED_PROXIES=10.2.0.0/24",
     "PHPIZE_DEPS=autoconf 		dpkg-dev 		file 		g++ 		gcc 		libc-dev 		make 		pkg-config 		re2c",
     "PHP_INI_DIR=/usr/local/etc/php",
     "APACHE_CONFDIR=/etc/apache2",
