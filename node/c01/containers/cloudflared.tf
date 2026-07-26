@@ -10,8 +10,9 @@ resource "docker_image" "cloudflared_image" {
 }
 
 resource "docker_container" "cloudflared" {
-  name    = "cloudflared"
-  image   = docker_image.cloudflared_image.image_id
-  restart = "unless-stopped"
-  command = ["tunnel", "--no-autoupdate", "run", "--token", "${var.cloudflared_token}"]
+  name                  = "cloudflared"
+  image                 = docker_image.cloudflared_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
+  command               = ["tunnel", "--no-autoupdate", "run", "--token", "${var.cloudflared_token}"]
 }

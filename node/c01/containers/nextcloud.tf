@@ -15,9 +15,10 @@ resource "docker_image" "nextcloud_image" {
 }
 
 resource "docker_container" "nextcloud" {
-  name    = "nextcloud"
-  image   = docker_image.nextcloud_image.image_id
-  restart = "unless-stopped"
+  name                  = "nextcloud"
+  image                 = docker_image.nextcloud_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
   ports {
     internal = 80
     external = local.ports.nextcloud

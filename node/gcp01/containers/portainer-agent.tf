@@ -5,9 +5,10 @@ resource "docker_image" "portainer_agent_image" {
 }
 
 resource "docker_container" "portainer_agent" {
-  name    = "portainer-agent"
-  image   = docker_image.portainer_agent_image.image_id
-  restart = "unless-stopped"
+  name                  = "portainer-agent"
+  image                 = docker_image.portainer_agent_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
   ports {
     internal = 9001
     external = local.ports.portainer_agent

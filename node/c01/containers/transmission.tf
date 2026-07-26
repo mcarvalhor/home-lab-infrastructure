@@ -13,9 +13,10 @@ resource "docker_volume" "vol_transmission_rw_data" {
 }
 
 resource "docker_container" "transmission" {
-  name    = "transmission"
-  image   = docker_image.transmission_image.image_id
-  restart = "unless-stopped"
+  name                  = "transmission"
+  image                 = docker_image.transmission_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
   ports {
     internal = 51413
     external = local.ports.transmission_peer

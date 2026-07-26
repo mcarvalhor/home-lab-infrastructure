@@ -5,15 +5,16 @@ resource "docker_image" "zabbix_agent_image" {
 }
 
 resource "docker_container" "zabbix_agent" {
-  name         = "zabbix-agent"
-  image        = docker_image.zabbix_agent_image.image_id
-  restart      = "unless-stopped"
-  user         = "root:root"
-  network_mode = "host"
-  pid_mode     = "host"
-  ipc_mode     = "host"
-  privileged   = true
-  init         = true
+  name                  = "zabbix-agent"
+  image                 = docker_image.zabbix_agent_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
+  user                  = "root:root"
+  network_mode          = "host"
+  pid_mode              = "host"
+  ipc_mode              = "host"
+  privileged            = true
+  init                  = true
   env = [
     "ZBX_HOSTNAME=or01",
     "ZBX_SERVER_HOST=10.2.0.2",

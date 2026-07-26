@@ -9,10 +9,11 @@ resource "docker_volume" "vol_wireguard_data" {
 }
 
 resource "docker_container" "wireguard" {
-  name         = "wireguard"
-  image        = docker_image.wireguard_image.image_id
-  restart      = "unless-stopped"
-  network_mode = "host"
+  name                  = "wireguard"
+  image                 = docker_image.wireguard_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
+  network_mode          = "host"
   capabilities {
     add = ["CAP_NET_ADMIN", "CAP_SYS_MODULE"]
   }

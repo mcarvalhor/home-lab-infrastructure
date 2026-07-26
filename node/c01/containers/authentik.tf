@@ -41,9 +41,10 @@ resource "docker_image" "authentik_server_image" {
 }
 
 resource "docker_container" "authentik_postgres" {
-  name    = "authentik_postgres"
-  image   = docker_image.authentik_postgres_image.image_id
-  restart = "unless-stopped"
+  name                  = "authentik_postgres"
+  image                 = docker_image.authentik_postgres_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
   networks_advanced {
     name = docker_network.authentik.name
   }
@@ -66,12 +67,13 @@ resource "docker_container" "authentik_postgres" {
 }
 
 resource "docker_container" "authentik_server" {
-  name       = "authentik_server"
-  image      = docker_image.authentik_server_image.image_id
-  restart    = "unless-stopped"
-  command    = ["server"]
-  shm_size   = 512
-  depends_on = [docker_container.authentik_postgres]
+  name                  = "authentik_server"
+  image                 = docker_image.authentik_server_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
+  command               = ["server"]
+  shm_size              = 512
+  depends_on            = [docker_container.authentik_postgres]
   networks_advanced {
     name = docker_network.authentik.name
   }
@@ -97,13 +99,14 @@ resource "docker_container" "authentik_server" {
 }
 
 resource "docker_container" "authentik_worker" {
-  name       = "authentik_worker"
-  image      = docker_image.authentik_server_image.image_id
-  restart    = "unless-stopped"
-  command    = ["worker"]
-  shm_size   = 512
-  user       = "root"
-  depends_on = [docker_container.authentik_postgres]
+  name                  = "authentik_worker"
+  image                 = docker_image.authentik_server_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
+  command               = ["worker"]
+  shm_size              = 512
+  user                  = "root"
+  depends_on            = [docker_container.authentik_postgres]
   networks_advanced {
     name = docker_network.authentik.name
   }

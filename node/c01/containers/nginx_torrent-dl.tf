@@ -5,9 +5,10 @@ resource "docker_image" "nginx_torrent_dl_image" {
 }
 
 resource "docker_container" "nginx_torrent_dl" {
-  name    = "nginx_torrent-dl"
-  image   = docker_image.nginx_torrent_dl_image.image_id
-  restart = "unless-stopped"
+  name                  = "nginx_torrent-dl"
+  image                 = docker_image.nginx_torrent_dl_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
   ports {
     internal = 80
     external = local.ports.nginx_torrent_dl

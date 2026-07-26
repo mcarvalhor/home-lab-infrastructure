@@ -5,9 +5,10 @@ resource "docker_image" "phpmyadmin_image" {
 }
 
 resource "docker_container" "phpmyadmin" {
-  name    = "phpmyadmin"
-  image   = docker_image.phpmyadmin_image.image_id
-  restart = "unless-stopped"
+  name                  = "phpmyadmin"
+  image                 = docker_image.phpmyadmin_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
   ports {
     internal = 80
     external = local.ports.phpmyadmin

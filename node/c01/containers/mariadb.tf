@@ -9,10 +9,11 @@ resource "docker_volume" "vol_mariadb_data" {
 }
 
 resource "docker_container" "mariadb" {
-  name         = "mariadb"
-  image        = docker_image.mariadb_image.image_id
-  restart      = "unless-stopped"
-  network_mode = "host"
+  name                  = "mariadb"
+  image                 = docker_image.mariadb_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
+  network_mode          = "host"
   env = [
     "GOSU_VERSION=1.14",
     "LANG=C.UTF-8",

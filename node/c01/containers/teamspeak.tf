@@ -9,9 +9,10 @@ resource "docker_volume" "vol_teamspeak_data" {
 }
 
 resource "docker_container" "teamspeak" {
-  name    = "teamspeak"
-  image   = docker_image.teamspeak_image.image_id
-  restart = "unless-stopped"
+  name                  = "teamspeak"
+  image                 = docker_image.teamspeak_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
   ports {
     internal = 10011
     external = local.ports.teamspeak_query

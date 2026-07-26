@@ -32,10 +32,11 @@ resource "docker_image" "wireguard_client_image" {
 }
 
 resource "docker_container" "wireguard_client" {
-  name         = "wireguard-client"
-  image        = docker_image.wireguard_client_image.image_id
-  restart      = "unless-stopped"
-  network_mode = "host"
+  name                  = "wireguard-client"
+  image                 = docker_image.wireguard_client_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
+  network_mode          = "host"
   capabilities {
     add = ["CAP_NET_ADMIN", "CAP_SYS_MODULE"]
   }

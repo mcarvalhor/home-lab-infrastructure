@@ -5,10 +5,11 @@ resource "docker_image" "php_image" {
 }
 
 resource "docker_container" "php" {
-  name    = "php"
-  image   = docker_image.php_image.image_id
-  restart = "unless-stopped"
-  command = ["bash", "-c", "apt update && apt install -y gettext && docker-php-ext-install gettext && a2enmod rewrite ssl && apache2-foreground"]
+  name                  = "php"
+  image                 = docker_image.php_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
+  command               = ["bash", "-c", "apt update && apt install -y gettext && docker-php-ext-install gettext && a2enmod rewrite ssl && apache2-foreground"]
   ports {
     internal = 443
     external = local.ports.php_https

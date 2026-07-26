@@ -9,9 +9,10 @@ resource "docker_volume" "vol_handbrake_data" {
 }
 
 resource "docker_container" "handbrake" {
-  name    = "handbrake"
-  image   = docker_image.handbrake_image.image_id
-  restart = "unless-stopped"
+  name                  = "handbrake"
+  image                 = docker_image.handbrake_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
   devices {
     host_path      = "/dev/dri"
     container_path = "/dev/dri"

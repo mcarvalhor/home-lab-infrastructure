@@ -9,9 +9,10 @@ resource "docker_volume" "vol_portainer_data" {
 }
 
 resource "docker_container" "portainer" {
-  name    = "portainer"
-  image   = docker_image.portainer_image.image_id
-  restart = "unless-stopped"
+  name                  = "portainer"
+  image                 = docker_image.portainer_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
   ports {
     internal = 9443
     external = local.ports.portainer

@@ -31,9 +31,10 @@ resource "docker_image" "kutt_image" {
 }
 
 resource "docker_container" "kutt" {
-  name    = "kutt"
-  image   = docker_image.kutt_image.image_id
-  restart = "unless-stopped"
+  name                  = "kutt"
+  image                 = docker_image.kutt_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
   ports {
     internal = 3000
     external = local.ports.kutt

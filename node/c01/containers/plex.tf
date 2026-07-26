@@ -14,9 +14,10 @@ resource "docker_volume" "vol_plex_data" {
 }
 
 resource "docker_container" "plex" {
-  name    = "plex"
-  image   = docker_image.plex_image.image_id
-  restart = "unless-stopped"
+  name                  = "plex"
+  image                 = docker_image.plex_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
   devices {
     host_path      = "/dev/dri"
     container_path = "/dev/dri"

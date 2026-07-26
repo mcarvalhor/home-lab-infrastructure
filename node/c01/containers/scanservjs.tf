@@ -9,10 +9,11 @@ resource "docker_volume" "vol_scanservjs_data" {
 }
 
 resource "docker_container" "scanservjs" {
-  name       = "scanservjs"
-  image      = docker_image.scanservjs_image.image_id
-  restart    = "unless-stopped"
-  privileged = true
+  name                  = "scanservjs"
+  image                 = docker_image.scanservjs_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
+  privileged            = true
   devices {
     host_path      = "/dev/bus/usb"
     container_path = "/dev/bus/usb"

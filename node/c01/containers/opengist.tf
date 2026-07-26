@@ -26,9 +26,10 @@ resource "docker_image" "opengist_image" {
 }
 
 resource "docker_container" "opengist" {
-  name    = "opengist"
-  image   = docker_image.opengist_image.image_id
-  restart = "unless-stopped"
+  name                  = "opengist"
+  image                 = docker_image.opengist_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
   ports {
     internal = 6157
     external = local.ports.opengist

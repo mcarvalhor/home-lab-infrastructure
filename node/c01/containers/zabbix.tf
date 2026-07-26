@@ -16,9 +16,10 @@ resource "docker_image" "zabbix_web_image" {
 }
 
 resource "docker_container" "zabbix_server" {
-  name    = "zabbix-server"
-  image   = docker_image.zabbix_server_image.image_id
-  restart = "unless-stopped"
+  name                  = "zabbix-server"
+  image                 = docker_image.zabbix_server_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
   ports {
     internal = 10051
     external = local.ports.zabbix_server
@@ -62,9 +63,10 @@ resource "docker_container" "zabbix_server" {
 }
 
 resource "docker_container" "zabbix_web" {
-  name    = "zabbix-web"
-  image   = docker_image.zabbix_web_image.image_id
-  restart = "unless-stopped"
+  name                  = "zabbix-web"
+  image                 = docker_image.zabbix_web_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
   ports {
     internal = 8080
     external = local.ports.zabbix_web

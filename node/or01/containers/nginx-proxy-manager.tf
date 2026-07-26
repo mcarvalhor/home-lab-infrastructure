@@ -9,10 +9,11 @@ resource "docker_volume" "vol_nginx_proxy_manager_data" {
 }
 
 resource "docker_container" "nginx_proxy_manager" {
-  name         = "nginx-proxy-manager"
-  image        = docker_image.nginx_proxy_manager_image.image_id
-  restart      = "unless-stopped"
-  network_mode = "host"
+  name                  = "nginx-proxy-manager"
+  image                 = docker_image.nginx_proxy_manager_image.image_id
+  restart               = "unless-stopped"
+  destroy_grace_seconds = 30
+  network_mode          = "host"
   env = [
     "DB_SQLITE_FILE=/data/database.sqlite",
     "X_FRAME_OPTIONS=sameorigin",
