@@ -1,5 +1,6 @@
 # Copy this template to "terraform.tfvars" and populate it with your actual sensitive values.
 
+jenkins_agent_secret = "<enter the value here>"
 wireguard_client_keys = {
   private_key   = "<enter the value here>"
   public_key    = "<enter the value here>"

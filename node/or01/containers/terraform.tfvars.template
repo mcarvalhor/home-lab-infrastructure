@@ -1,0 +1,3 @@
+# Copy this template to "terraform.tfvars" and populate it with your actual sensitive values.
+
+jenkins_agent_secret = "<enter the value here>"
