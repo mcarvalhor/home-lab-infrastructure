@@ -18,7 +18,6 @@ BASE_PACKAGES=(
 	ca-certificates
 	apt-transport-https
 	gnupg
-	software-properties-common
 )
 
 # Packages provided by the third-party repositories added further below
