@@ -18,6 +18,9 @@ BASE_PACKAGES=(
 	ca-certificates
 	apt-transport-https
 	gnupg
+	# Required by the Google Cloud CLI, whose post-install step needs a working
+	# Python interpreter (absent from slim/minimal Debian base images).
+	python3
 )
 
 # Packages provided by the third-party repositories added further below
@@ -62,9 +65,12 @@ fi
 # ----------------------------------------------------------------------------
 
 echo "==> Installing base packages..."
-apt-get update &>/dev/null || fail "could not refresh the apt package index."
-apt-get install -y "${BASE_PACKAGES[@]}" &>/dev/null \
-	|| fail "could not install base packages."
+if ! output="$(apt-get update 2>&1)"; then
+	fail "could not refresh the apt package index:"$'\n'"${output}"
+fi
+if ! output="$(apt-get install -y "${BASE_PACKAGES[@]}" 2>&1)"; then
+	fail "could not install base packages:"$'\n'"${output}"
+fi
 
 # Track whether we add any new repository, so we only run 'apt update' again
 # when it is strictly necessary (i.e. a new source list was written).
@@ -131,14 +137,17 @@ fi
 
 if [ "${repos_added}" = true ]; then
 	echo "==> Refreshing apt package index for the newly added repositories..."
-	apt-get update &>/dev/null || fail "could not refresh the apt package index."
+	if ! output="$(apt-get update 2>&1)"; then
+		fail "could not refresh the apt package index:"$'\n'"${output}"
+	fi
 else
 	echo "==> No new repositories added; skipping apt index refresh."
 fi
 
 echo "==> Installing repository packages (${REPO_PACKAGES[*]})..."
-apt-get install -y "${REPO_PACKAGES[@]}" &>/dev/null \
-	|| fail "could not install repository packages: ${REPO_PACKAGES[*]}."
+if ! output="$(apt-get install -y "${REPO_PACKAGES[@]}" 2>&1)"; then
+	fail "could not install repository packages (${REPO_PACKAGES[*]}):"$'\n'"${output}"
+fi
 
 # ----------------------------------------------------------------------------
 # Verify the required commands are available.
