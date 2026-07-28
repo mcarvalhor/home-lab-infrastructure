@@ -1,0 +1,6 @@
+authentik_postgres
+authentik_server
+authentik_worker
+mariadb
+nextcloud
+zabbix-server
