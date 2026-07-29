@@ -25,3 +25,11 @@ kutt_oidc = {
   client_secret = "<enter the value here>"
   issuer        = "<enter the value here>"
 }
+open_webui_oidc = {
+  client_id            = "<enter the value here>"
+  client_secret        = "<enter the value here>"
+  provider_url         = "<enter the value here>"
+  redirect_uri         = "<enter the value here>"
+  end_session_endpoint = "<enter the value here>"
+  scopes               = "<enter the value here>"
+}
