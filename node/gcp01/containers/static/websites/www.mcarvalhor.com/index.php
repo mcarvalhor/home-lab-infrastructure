@@ -15,8 +15,8 @@ $location = ["", ""];
 
 $footer = '<span>' . date("Y") . '</span>';
 
-$recaptchaPublicToken = "";
-$recaptchaSecretToken = "";
+$turnstilePublicToken = "";
+$turnstileSecretToken = "";
 
 if (file_exists("config.php")) {
 	include("config.php");
@@ -24,12 +24,12 @@ if (file_exists("config.php")) {
 
 $requestType = $_GET["req"];
 if ($requestType == "submit") {
-	if(!empty($_POST["g-recaptcha-response"])){
-		$requestData = ["secret" => $recaptchaSecretToken, "response" => $_POST["g-recaptcha-response"], "remoteip" => $_SERVER["REMOTE_ADDR"]];
+	if(!empty($_POST["cf-turnstile-response"])){
+		$requestData = ["secret" => $turnstileSecretToken, "response" => $_POST["cf-turnstile-response"], "remoteip" => $_SERVER["REMOTE_ADDR"]];
 		try {
 			$requestOptions = ["http" => ["header" => "Content-type: application/x-www-form-urlencoded\r\n", "method" => "POST", "content" => http_build_query($requestData)]];
 			$requestStreamContext = stream_context_create($requestOptions);
-			$requestResults = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify", false, $requestStreamContext), true);
+			$requestResults = json_decode(file_get_contents("https://challenges.cloudflare.com/turnstile/v0/siteverify", false, $requestStreamContext), true);
 			if($requestResults["success"] == true) {
 				$headerLinks = "";
 				$footerLinks = "";
@@ -323,7 +323,7 @@ if ($requestType == "submit") {
 		}
 	</style>
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
+	<script type="text/javascript" src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 	<script type="text/javascript">
 		function messageText(msg) {
 			document.getElementById("messageWindow").innerHTML = msg;
@@ -380,7 +380,7 @@ if ($requestType == "submit") {
 			<div id="windowShadowEffect" onclick="closeWindow();"></div>
 			<div id="botWindow" style="display: none;">
 				<form action="?req=submit" method="post" id="botChallengeForm" onsubmit="submitBotChallenge(); return false;">
-					<div class="g-recaptcha" data-sitekey="<?php echo $recaptchaPublicToken; ?>" data-callback="submitBotChallenge"></div>
+					<div class="cf-turnstile" data-sitekey="<?php echo $turnstilePublicToken; ?>" data-theme="light" data-size="flexible" data-appearance="interaction-only" data-response-field-name="cf-turnstile-response" data-callback="submitBotChallenge" data-refresh-timeout="auto" data-refresh-expired="auto"></div>
 				</form>
 			</div>
 			<div id="messageWindow" style="display: none;">

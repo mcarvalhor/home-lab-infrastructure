@@ -29,5 +29,5 @@ $location = ["Brazil", ""];
 
 $footer = '<span>' . date("Y") . '</span>';
 
-$recaptchaPublicToken = "<public token>";
-$recaptchaSecretToken = "<secret token>";
+$turnstilePublicToken = "<public token>";
+$turnstileSecretToken = "<secret token>";
