@@ -92,6 +92,16 @@ if ($requestType == "submit") {
 	<link rel="stylesheet" href="css/fontawesome-free-6.5.1-all.min.css">
 	<title>Matheus CR. (Matt) | <?php echo $subtitle; ?></title>
 	<style type="text/css">
+		:root {
+			--font-sans:
+				system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell,
+				"Noto Sans", "Liberation Sans", Arial, sans-serif,
+				"Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+
+			--font-mono:
+				ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+				"Liberation Mono", "DejaVu Sans Mono", monospace;
+		}
 		@media not all and (min-width: 360px) and (min-height: 310px){
 			#main-noscreen {
 				display: block;
@@ -138,9 +148,10 @@ if ($requestType == "submit") {
 			margin: 0 auto;
 			background-color: rgb(0, 0, 0);
 			color: rgb(255, 255, 255);
+			font-size: 1.1em;
+			font-family: var(--font-mono);
 		}
 		#main {
-			font-size: 16px;
 			width: 90%;
 			min-width: 350px;
 			max-width: 1080px;
