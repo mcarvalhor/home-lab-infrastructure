@@ -346,10 +346,6 @@ if ($requestType == "submit") {
 			document.getElementById("botWindow").style.display = "block";
 			document.getElementById("messageWindow").style.display = "none";
 			$("#windowShadow").stop().fadeIn(1000);
-			turnstile.execute();
-		}
-		function windowLoaded() {
-			turnstile.execute();
 		}
 		function closeWindow() {
 			$("#windowShadow").stop().fadeOut(1000);
@@ -386,7 +382,6 @@ if ($requestType == "submit") {
 				}
 			});
 		}
-		window.onload = windowLoaded;
 	</script>
 </head>
 
@@ -396,7 +391,7 @@ if ($requestType == "submit") {
 			<div id="windowShadowEffect" onclick="closeWindow();"></div>
 			<div id="botWindow" style="display: none;">
 				<form action="?req=submit" method="post" id="botChallengeForm" onsubmit="submitBotChallenge(); return false;">
-					<div class="cf-turnstile" data-sitekey="<?php echo $turnstilePublicToken; ?>" data-theme="light" data-size="flexible" data-appearance="execute" data-response-field-name="cf-turnstile-response" data-callback="submitBotChallenge" data-refresh-timeout="auto" data-refresh-expired="auto" data-execution="execute"></div>
+					<div class="cf-turnstile" data-sitekey="<?php echo $turnstilePublicToken; ?>" data-action="reveal-personal-data" data-theme="light" data-size="flexible" data-appearance="execute" data-response-field-name="cf-turnstile-response" data-callback="submitBotChallenge" data-refresh-timeout="auto" data-refresh-expired="auto" data-execution="render"></div>
 				</form>
 			</div>
 			<div id="messageWindow" style="display: none;">
