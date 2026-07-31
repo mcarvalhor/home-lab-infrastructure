@@ -66,7 +66,7 @@ resource "docker_container" "open_webui_postgres" {
   ]
   healthcheck {
     test         = ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER} && psql 'postgresql://open_webui:${var.open_webui_pg_password}@open-webui-postgres:5432/open_webui' -c 'CREATE EXTENSION IF NOT EXISTS vector;'"]
-    interval     = "1m"
+    interval     = "1m0s"
     timeout      = "10s"
     retries      = 5
     start_period = "20s"
