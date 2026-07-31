@@ -35,7 +35,7 @@ resource "docker_volume" "vol_open_webui_data" {
 }
 
 resource "docker_image" "open_webui_postgres_image" {
-  name          = "postgres:16-alpine"
+  name          = "pgvector/pgvector:pg16-alpine"
   keep_locally  = false
   pull_triggers = [local.last_deployment.open_webui_postgres]
 }
@@ -52,7 +52,7 @@ resource "docker_container" "open_webui_postgres" {
   restart               = "unless-stopped"
   command               = ["postgres", "-c", "max_connections=300", "-c", "shared_buffers=5GB", "-c", "effective_cache_size=16GB", "-c", "maintenance_work_mem=2GB", "-c", "work_mem=32MB"]
   destroy_grace_seconds = 30
-  shm_size              = 128
+  shm_size              = 6144
   memory                = 16384
   cpus                  = "4"
   networks_advanced {
@@ -64,9 +64,9 @@ resource "docker_container" "open_webui_postgres" {
     "POSTGRES_PASSWORD=${var.open_webui_pg_password}",
   ]
   healthcheck {
-    test         = ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
-    interval     = "30s"
-    timeout      = "5s"
+    test         = ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER} && psql 'postgresql://open_webui:${var.open_webui_pg_password}@open_webui_postgres:5432/open_webui' -c 'CREATE EXTENSION IF NOT EXISTS vector;'"]
+    interval     = "1m"
+    timeout      = "10s"
     retries      = 5
     start_period = "20s"
   }
@@ -97,7 +97,7 @@ resource "docker_container" "open_webui" {
   env = [
     "WEBUI_URL=https://ai.mcarvalhor.com",
     "CORS_ALLOW_ORIGIN=https://ai.mcarvalhor.com",
-    "DATABASE_URL=postgresql+asyncpg://open_webui:${var.open_webui_pg_password}@open_webui_postgres:5432/open_webui",
+    "DATABASE_URL=postgresql://open_webui:${var.open_webui_pg_password}@open_webui_postgres:5432/open_webui",
     "DATABASE_POOL_SIZE=20",
     "DATABASE_POOL_MAX_OVERFLOW=30",
     "VECTOR_DB=pgvector",
