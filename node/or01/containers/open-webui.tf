@@ -64,7 +64,7 @@ resource "docker_container" "open_webui_postgres" {
     "POSTGRES_PASSWORD=${var.open_webui_pg_password}",
   ]
   healthcheck {
-    test         = ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER} && psql 'postgresql://open_webui:${var.open_webui_pg_password}@open_webui_postgres:5432/open_webui' -c 'CREATE EXTENSION IF NOT EXISTS vector;'"]
+    test         = ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER} && psql 'postgresql://open_webui:${var.open_webui_pg_password}@open-webui-postgres:5432/open_webui' -c 'CREATE EXTENSION IF NOT EXISTS vector;'"]
     interval     = "1m"
     timeout      = "10s"
     retries      = 5
@@ -97,11 +97,11 @@ resource "docker_container" "open_webui" {
   env = [
     "WEBUI_URL=https://ai.mcarvalhor.com",
     "CORS_ALLOW_ORIGIN=https://ai.mcarvalhor.com",
-    "DATABASE_URL=postgresql://open_webui:${var.open_webui_pg_password}@open_webui_postgres:5432/open_webui",
+    "DATABASE_URL=postgresql://open_webui:${var.open_webui_pg_password}@open-webui-postgres:5432/open_webui",
     "DATABASE_POOL_SIZE=20",
     "DATABASE_POOL_MAX_OVERFLOW=30",
     "VECTOR_DB=pgvector",
-    "PGVECTOR_DB_URL=postgresql://open_webui:${var.open_webui_pg_password}@open_webui_postgres:5432/open_webui",
+    "PGVECTOR_DB_URL=postgresql://open_webui:${var.open_webui_pg_password}@open-webui-postgres:5432/open_webui",
     "DATABASE_ENABLE_SESSION_SHARING=true", # If performance goes bad, try to set it to false.
     "THREAD_POOL_SIZE=2000",
     "DATABASE_USER_ACTIVE_STATUS_UPDATE_INTERVAL=600",
