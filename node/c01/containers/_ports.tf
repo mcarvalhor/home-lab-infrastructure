@@ -13,7 +13,6 @@ locals {
     nginx_torrent_dl = 20010
     opengist         = 20011
     kutt             = 20012
-    open_webui       = 20013
 
     # Protocol-specific ports kept at their native number.
     portainer         = 9443
