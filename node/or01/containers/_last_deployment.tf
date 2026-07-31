@@ -5,5 +5,7 @@ locals {
     nginx_proxy_manager : "Wed Jul 22 03:39:47 AM -03 2026"
     jenkins_agent : "Wed Jul 22 03:39:47 AM -03 2026"
     zabbix_agent : "Wed Jul 22 03:39:47 AM -03 2026"
+    open_webui_postgres : "Wed Jul 22 03:39:47 AM -03 2026"
+    open_webui : "Wed Jul 22 03:39:47 AM -03 2026"
   }
 }

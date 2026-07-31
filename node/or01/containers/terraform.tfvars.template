@@ -1,3 +1,12 @@
 # Copy this template to "terraform.tfvars" and populate it with your actual sensitive values.
 
-jenkins_agent_secret = "<enter the value here>"
+jenkins_agent_secret   = "<enter the value here>"
+open_webui_pg_password = "<enter the value here>" # echo "$(openssl rand -base64 36 | tr -d '\n')"
+open_webui_oidc = {
+  client_id            = "<enter the value here>"
+  client_secret        = "<enter the value here>"
+  provider_url         = "<enter the value here>"
+  redirect_uri         = "<enter the value here>"
+  end_session_endpoint = "<enter the value here>"
+  scopes               = "<enter the value here>"
+}
