@@ -35,7 +35,7 @@ resource "docker_volume" "vol_open_webui_data" {
 }
 
 resource "docker_image" "open_webui_postgres_image" {
-  name          = "pgvector/pgvector:pg16-alpine"
+  name          = "pgvector/pgvector:pg16-trixie"
   keep_locally  = false
   pull_triggers = [local.last_deployment.open_webui_postgres]
 }
