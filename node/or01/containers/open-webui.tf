@@ -47,7 +47,7 @@ resource "docker_image" "open_webui_image" {
 }
 
 resource "docker_container" "open_webui_postgres" {
-  name                  = "open_webui_postgres"
+  name                  = "open-webui-postgres"
   image                 = docker_image.open_webui_postgres_image.image_id
   restart               = "unless-stopped"
   command               = ["postgres", "-c", "max_connections=300", "-c", "shared_buffers=5GB", "-c", "effective_cache_size=16GB", "-c", "maintenance_work_mem=2GB", "-c", "work_mem=32MB"]
