@@ -54,7 +54,7 @@ resource "docker_container" "open_webui_postgres" {
   destroy_grace_seconds = 30
   shm_size              = 6144
   memory                = 16384
-  cpus                  = "4"
+  cpus                  = "4.0"
   networks_advanced {
     name = docker_network.open_webui.name
   }
@@ -82,7 +82,7 @@ resource "docker_container" "open_webui" {
   restart               = "unless-stopped"
   destroy_grace_seconds = 30
   memory                = 16384
-  cpus                  = "4"
+  cpus                  = "4.0"
   networks_advanced {
     name = docker_network.open_webui.name
   }
