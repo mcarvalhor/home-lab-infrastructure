@@ -1,8 +1,3 @@
-variable "nextcloud_smtp_password" {
-  type      = string
-  sensitive = true
-}
-
 variable "nextcloud_mysql_password" {
   type      = string
   sensitive = true
@@ -28,14 +23,14 @@ resource "docker_container" "nextcloud" {
     "MYSQL_HOST=10.1.1.1",
     "MYSQL_USER=nextcloud",
     "MYSQL_PASSWORD=${var.nextcloud_mysql_password}",
-    "SMTP_HOST=smtp.sendgrid.net",
-    "SMTP_SECURE=ssl",
-    "SMTP_PORT=465",
+    "SMTP_HOST=${var.smtp_config.host}",
+    "SMTP_SECURE=tls",
+    "SMTP_PORT=${var.smtp_config.port}",
     "SMTP_AUTHTYPE=LOGIN",
-    "SMTP_NAME=apikey",
-    "SMTP_PASSWORD=${var.nextcloud_smtp_password}",
-    "MAIL_FROM_ADDRESS=admin@mcarvalhor.com",
-    "MAIL_DOMAIN=mcarvalhor.com",
+    "SMTP_NAME=${var.smtp_config.username}",
+    "SMTP_PASSWORD=${var.smtp_config.password}",
+    "MAIL_FROM_ADDRESS=${var.smtp_config.from_address.nextcloud}",
+    "MAIL_DOMAIN=${var.smtp_config.domain}",
     "PHP_MEMORY_LIMIT=12228M",
     "PHP_UPLOAD_LIMIT=12228M",
     "NEXTCLOUD_TRUSTED_DOMAINS=cloud.mcarvalhor.com mcarvalhor.com",

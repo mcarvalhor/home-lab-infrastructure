@@ -87,6 +87,14 @@ resource "docker_container" "authentik_server" {
     "AUTHENTIK_POSTGRESQL__USER=authentik",
     "AUTHENTIK_POSTGRESQL__PASSWORD=${var.authentik_pg_password}",
     "AUTHENTIK_SECRET_KEY=${var.authentik_secret_key}",
+    "AUTHENTIK_EMAIL__HOST=${var.smtp_config.host}",
+    "AUTHENTIK_EMAIL__PORT=${var.smtp_config.port}",
+    "AUTHENTIK_EMAIL__USERNAME=${var.smtp_config.username}",
+    "AUTHENTIK_EMAIL__PASSWORD=${var.smtp_config.password}",
+    "AUTHENTIK_EMAIL__USE_TLS=true",
+    #"AUTHENTIK_EMAIL__USE_SSL=false",
+    "AUTHENTIK_EMAIL__TIMEOUT=15",
+    "AUTHENTIK_EMAIL__FROM=${var.smtp_config.from_address.authentik}",
   ]
   volumes {
     volume_name    = docker_volume.vol_authentik_data.name
