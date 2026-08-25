@@ -1,0 +1,2 @@
+# Ignore Wireguard configuration files
+*.wg.conf
