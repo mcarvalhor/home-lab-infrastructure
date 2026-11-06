@@ -1,11 +1,11 @@
 locals {
   last_deployment = {
-    wireguard : "Wed Jul 22 03:39:47 AM -03 2026"
-    portainer_agent : "Wed Jul 22 03:39:47 AM -03 2026"
-    nginx_proxy_manager : "Wed Jul 22 03:39:47 AM -03 2026"
-    jenkins_agent : "Wed Jul 22 03:39:47 AM -03 2026"
-    zabbix_agent : "Wed Jul 22 03:39:47 AM -03 2026"
-    open_webui_postgres : "Fri Jul 31 21:01:02 UTC 2026"
-    open_webui : "Fri Jul 31 21:01:02 UTC 2026"
+    wireguard : "Fri  6 Nov 2026 02:33:45 -03"
+    portainer_agent : "Fri  6 Nov 2026 02:33:45 -03"
+    nginx_proxy_manager : "Fri  6 Nov 2026 02:33:45 -03"
+    jenkins_agent : "Fri  6 Nov 2026 02:33:45 -03"
+    zabbix_agent : "Fri  6 Nov 2026 02:33:45 -03"
+    open_webui_postgres : "Fri  6 Nov 2026 02:33:45 -03"
+    open_webui : "Fri  6 Nov 2026 02:33:45 -03"
   }
 }
